@@ -50,6 +50,8 @@ public class Merge extends HttpServlet {
 				);
 			Template merged = merger.merge();
 			merged.getMergedOutput().streamValue(response.getOutputStream());
+			// TODO handle content disposition / type / etc.
+			
 		} catch (MergeException e) {
 			// TODO handle exception using e.getErrorMessage(merger);
 		}
