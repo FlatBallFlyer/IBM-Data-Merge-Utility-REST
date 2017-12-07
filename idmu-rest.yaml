@@ -1,0 +1,44 @@
+swagger: '2.0'
+info:
+  version: 4.0.0
+  title: idmu-rest
+paths:
+  /Merge/:
+    get:
+      tags: []
+      summary: Merge a Template and return the output
+      description: Merge a Template
+      responses:
+        '200':
+          description: Success - Template Output
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/text
+      produces:
+        - application/text
+schemes:
+  - https
+tags: []
+externalDocs:
+  url: https://flatballflyer.github.io/IBM-Data-Merge-Utility-REST/
+  description: Github Project
