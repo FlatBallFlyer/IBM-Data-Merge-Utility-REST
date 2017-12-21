@@ -1,6 +1,9 @@
 package com.ibm.util.merge.rest;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
-
 import com.ibm.util.merge.Cache;
 import com.ibm.util.merge.Merger;
 import com.ibm.util.merge.exception.MergeException;
@@ -21,40 +23,30 @@ import com.ibm.util.merge.template.Template;
 @WebServlet("/Merge")
 public class Merge extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Cache cache;
+	private static final Logger LOGGER = Logger.getLogger(Merge.class.getName());
 	
-    /**
-     * Default constructor. 
-     */
-    public Merge() {
-        try {
-			cache = new Cache();
-		} catch (MergeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Merger merger = null;
-		String template = ""; // TODO - template from request.parts
-		String payload = IOUtils.toString(request.getInputStream(), "ISO-8859-1");
 		try {
-			merger = new Merger(cache, 
-					template, 
+			merger = new Merger(
+					(Cache) request.getServletContext().getAttribute("Cache"), 
+					request.getPathInfo().substring(1), 
 					request.getParameterMap(), 
-					payload
+					IOUtils.toString(request.getInputStream(), request.getCharacterEncoding())
 				);
 			Template merged = merger.merge();
+			response.setContentType(Template.CONTENT_TYPES().get(merged.getContentType()));
+			response.setHeader("Content-Disposition", merged.getContentDisposition());
 			merged.getMergedOutput().streamValue(response.getOutputStream());
-			// TODO handle content disposition / type / etc.
-			
 		} catch (MergeException e) {
-			// TODO handle exception using e.getErrorMessage(merger);
+			LOGGER.log(Level.WARNING, e.getErrorMessage(merger));
+			response.getWriter().write(e.getErrorMessage(merger));
+		} catch (Throwable t) {
+			LOGGER.log(Level.WARNING, t.getMessage());
+			response.getWriter().write(t.getMessage());
 		}
 	}
-
 }

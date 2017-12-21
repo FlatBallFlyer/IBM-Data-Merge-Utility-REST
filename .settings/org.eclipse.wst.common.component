@@ -3,9 +3,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <dependent-module archiveName="idmu-4.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/IBM-Data-Merge-Utility/IBM-Data-Merge-Utility">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="java-output-path" value="/IBM-Data-Merge-Utility-REST/target/classes"/>
         <property name="context-root" value="idmu-rest"/>
     </wb-module>

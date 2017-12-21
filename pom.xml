@@ -79,7 +79,7 @@
 		<dependency>
 			<groupId>com.ibm.util.merge</groupId>
 			<artifactId>idmu</artifactId>
-			<version>4.0.0-SNAPSHOT</version>
+			<version>4.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
