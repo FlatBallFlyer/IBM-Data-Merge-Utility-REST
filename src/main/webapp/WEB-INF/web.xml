@@ -1,12 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
 	<display-name>IBM-Data-Merge-Utility-REST</display-name>
+    <description>
+        This is a simple web application with a source code organization
+        based on the recommendations of the Application Developer's Guide.
+    </description>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>Initialize</servlet-name>
+		<servlet-class>com.ibm.util.merge.rest.Initialize</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Initialize</servlet-name>
+		<url-pattern>/Initialize</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Config</servlet-name>
+		<servlet-class>com.ibm.util.merge.rest.Config</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Config</servlet-name>
+		<url-pattern>/Config</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Group</servlet-name>
+		<servlet-class>com.ibm.util.merge.rest.Group</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Group</servlet-name>
+		<url-pattern>/Group/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Template</servlet-name>
+		<servlet-class>com.ibm.util.merge.rest.Template</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Template</servlet-name>
+		<url-pattern>/Template/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Merge</servlet-name>
+		<servlet-class>com.ibm.util.merge.rest.Merge</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Merge</servlet-name>
+		<url-pattern>/Merge/*</url-pattern>
+	</servlet-mapping>
+
 </web-app>

@@ -5,12 +5,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
 import com.ibm.util.merge.Cache;
 import com.ibm.util.merge.Merger;
 import com.ibm.util.merge.exception.MergeException;
@@ -20,7 +18,6 @@ import com.ibm.util.merge.template.Template;
 /**
  * Servlet implementation class Rest
  */
-@WebServlet("/Merge")
 public class Merge extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = Logger.getLogger(Merge.class.getName());
@@ -35,7 +32,8 @@ public class Merge extends HttpServlet {
 					(Cache) request.getServletContext().getAttribute("Cache"), 
 					request.getPathInfo().substring(1), 
 					request.getParameterMap(), 
-					IOUtils.toString(request.getInputStream(), request.getCharacterEncoding())
+					request.getInputStream(), 
+					request.getCharacterEncoding()
 				);
 			Template merged = merger.merge();
 			response.setContentType(Template.CONTENT_TYPES().get(merged.getContentType()));

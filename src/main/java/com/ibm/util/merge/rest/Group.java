@@ -5,7 +5,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +17,6 @@ import com.ibm.util.merge.exception.MergeException;
 /**
  * Servlet implementation class Rest
  */
-@WebServlet("/Group")
 public class Group extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = Logger.getLogger(Group.class.getName());
@@ -27,15 +25,17 @@ public class Group extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
+		try { 
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
-			String fullname = request.getPathInfo().substring(1);
+			String fullname = request.getPathInfo();
+			if (fullname == null) fullname = "/";
+			fullname = fullname.substring(1);
 			String reply = cache.getGroup(fullname);
-			response.setContentType("applicaiton/json");
+//			response.setContentType("applicaiton/json");
 			response.getWriter().write(reply);
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
-			response.getWriter().write(t.getMessage());
+			response.getWriter().write("ERROR");
 		}
 	}
 
@@ -74,7 +74,9 @@ public class Group extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
-			String fullname = request.getPathInfo().substring(1);
+			String fullname = request.getPathInfo();
+			if (fullname == null) fullname = "/";
+			fullname = fullname.substring(1);
 			String reply = cache.deleteGroup(fullname);
 			response.setContentType("applicaiton/json");
 			response.getWriter().write(reply);

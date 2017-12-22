@@ -28,22 +28,24 @@ public class Initialize extends HttpServlet {
      */
     @Override
     public void init(ServletConfig cfg) throws ServletException {
-    		super.init(cfg);
-    		initializeApp(cfg.getServletContext());
+    		try {
+	    		super.init(cfg);
+	    		initializeApp(cfg.getServletContext());
+		} catch (MergeException e) {
+			LOGGER.log(Level.SEVERE, "Failed to initialize Cache!" + e.getMessage());
+			return;
+		} catch (Throwable t) {
+			LOGGER.log(Level.SEVERE, "Throwable during initializeApp!" + t.getMessage());
+			return;
+		}
     }
 
     /**
      * Initialize the Cache stored in the Servlet Context
      * @param context the Servlet Context
      */
-    private void initializeApp(ServletContext context) {
-		Cache cache;
-		try {
-			cache = new Cache();
-		} catch (MergeException e) {
-			LOGGER.log(Level.SEVERE, "Failed to initialize Cache!" + e.getMessage());
-			return;
-		}
+    private void initializeApp(ServletContext context) throws MergeException {
+		Cache cache = new Cache();
 		context.setAttribute("Cache", cache);
     }
     
@@ -60,8 +62,18 @@ public class Initialize extends HttpServlet {
      */
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-    		initializeApp(req.getServletContext());
-    		res.getWriter().write("Initialized");
+    		try {
+    			initializeApp(req.getServletContext());
+    			res.getWriter().write("Initialized");
+    		} catch (MergeException e) {
+    			LOGGER.log(Level.SEVERE, "Failed to initialize Cache!" + e.getMessage());
+    			res.getWriter().write("ERROR");
+    			return;
+    		} catch (Throwable t) {
+    			res.getWriter().write("ERROR");
+    			LOGGER.log(Level.SEVERE, "Throwable during initializeApp!" + t.getMessage());
+    			return;
+    		}
     }
     
 }
