@@ -36,6 +36,366 @@ paths:
         - application/text
       produces:
         - application/text
+  /Archive/:
+    get:
+      tags: []
+      summary: Get a generated archive file
+      description: 
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /Config/:
+    get:
+      tags: []
+      summary: Get Configuration Information
+      description: Get Config
+      responses:
+        '200':
+          description: Success - Config Object
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /Initialize/:
+    post:
+      tags: []
+      summary: Re-Initialize Server Template Cache
+      description: 
+      responses:
+        '200':
+          description: Success 
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/text
+      produces:
+        - application/text
+
+  /Group/:
+    get:
+      tags: []
+      summary: Get a Template Group
+      description: 
+      responses:
+        '200':
+          description: Success 
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+    put:
+      tags: []
+      summary: Add a new template group
+      description: 
+      responses:
+        '200':
+          description: Success 
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+    post:
+      tags: []
+      summary: Update a Template Group
+      description: 
+      responses:
+        '200':
+          description: Success 
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+    delete:
+      tags: []
+      summary: Delete a Template Group
+      description: 
+      responses:
+        '200':
+          description: Success 
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+
+  /Template/:
+    get:
+      tags: []
+      summary: Get a Template 
+      description: 
+      responses:
+        '200':
+          description: Success 
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+    put:
+      tags: []
+      summary: Add a new template 
+      description: 
+      responses:
+        '200':
+          description: Success 
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+    post:
+      tags: []
+      summary: Update a Template 
+      description: 
+      responses:
+        '200':
+          description: Success 
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+    delete:
+      tags: []
+      summary: Delete a Template 
+      description: 
+      responses:
+        '200':
+          description: Success 
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+
 schemes:
   - https
 tags: []
