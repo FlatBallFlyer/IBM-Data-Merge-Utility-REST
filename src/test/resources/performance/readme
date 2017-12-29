@@ -7,7 +7,6 @@ the script testPerformance.sh will run performance load testing in three phases:
 2. Use the templates in perf/templates to perform JSON->XML and XML->JSON transforms
    This takes place as two merge calls, and response time includes file-i/o to both 
    read the request and write the response. 
-   I've seen average resposne times of 0.2 to 0.3 miliseconds per transform.
 
 3. Now all of the transformed files are diff'd against their generated counterpart to validate
    that the transformations were successful. This is the longest step of the process.
