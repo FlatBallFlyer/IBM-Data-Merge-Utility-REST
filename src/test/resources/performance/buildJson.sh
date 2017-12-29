@@ -10,7 +10,7 @@ curl -X POST -d @./perf/templates/templates.json $1/Group > /dev/null 2> /dev/nu
 cd ./perf/payloadFolder
 for f in ./*; do
   echo -e -n "\r $f    ";
-  curl -X GET -d @./$f $1/Merge/test.aToB. > ../output/$f 2> /dev/null &
+  curl -X GET -d @./$f $1/Merge/test.aToB. > ../output/$f 2> /dev/null 
 done
 cd ../..
 echo "";
