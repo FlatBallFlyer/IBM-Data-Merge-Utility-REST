@@ -4,7 +4,7 @@
 	<groupId>com.ibm.util.merge</groupId>
 	<artifactId>idmu-rest</artifactId>
 	<version>4.0.1-SNAPSHOT</version>
-	<name>idmu-cli</name>
+	<name>idmu</name>
 	<packaging>war</packaging>
 	<description>IDMU Rest Interface</description>
 	<url>http://flatballflyer.github.io/IBM-Data-Merge-Utility-Rest/</url>

@@ -40,11 +40,11 @@ public class Merge extends HttpServlet {
 			response.setHeader("Content-Disposition", merged.getContentDisposition());
 			merged.getMergedOutput().streamValue(response.getOutputStream());
 		} catch (MergeException e) {
-			LOGGER.log(Level.WARNING, e.getErrorMessage(merger));
-			response.getWriter().write(e.getErrorMessage(merger));
+			LOGGER.log(Level.WARNING, "MergeException:" + e.getErrorMessage());
+			response.getWriter().write(e.getErrorMessage());
 		} catch (Throwable t) {
-			LOGGER.log(Level.WARNING, t.getMessage());
-			response.getWriter().write(t.getMessage());
+			LOGGER.log(Level.WARNING, "Throwable:" + t.getMessage());
+			response.getWriter().write("Throwable Caught!");
 		}
 	}
 }

@@ -2,8 +2,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
 	<display-name>IBM-Data-Merge-Utility-REST</display-name>
     <description>
-        This is a simple web application with a source code organization
-        based on the recommendations of the Application Developer's Guide.
+        IDMU Rest Services
     </description>
 
 	<welcome-file-list>
@@ -18,6 +17,15 @@
 	<servlet-mapping>
 		<servlet-name>Initialize</servlet-name>
 		<url-pattern>/Initialize</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Archive</servlet-name>
+		<servlet-class>com.ibm.util.merge.rest.Archive</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Archive</servlet-name>
+		<url-pattern>/Archive/*</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

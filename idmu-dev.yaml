@@ -1,0 +1,499 @@
+swagger: '2.0'
+info:
+  version: 4.0.0
+  title: idmu-dev
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+  - application/xml
+  - text/xml
+  - application/javascript
+  - text/javascript
+paths:
+  /Merge/{name}:
+    get:
+      tags: []
+      summary: Merge a Template and return the output
+      description: Merge a Template
+      responses:
+        '200':
+          description: Success - Template Output
+          headers: {}
+          examples: {}
+          schema: {}
+        '404':
+          description: Not Found Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '405':
+          description: Not Allowed Error
+          headers: {}
+          examples: {}
+          schema: {}
+        '500':
+          description: Merge Processing Error
+          headers: {}
+          examples: {}
+          schema: {}
+      deprecated: false
+      security:
+        - {}
+      consumes:
+        - application/text
+      produces:
+        - application/text
+  '/Template/{name}':
+    get:
+      tags:
+        - Template
+      summary: Get the named template.
+      parameters:
+        - name: name
+          in: path
+          description: Template name in the form group.template.variant
+          required: true
+          type: string
+          format: txt
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: #/definitions/Template
+      deprecated: false
+    post:
+      tags:
+        - Template
+      summary: Add a new template
+      operationId: User.prototype.__updateById__accessTokens
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/Template'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Template'
+      deprecated: false
+    delete:
+      tags:
+        - Template
+      summary: Delete a related item by id for accessTokens.
+      parameters:
+        - name: name
+          in: path
+          description: Template name to delete
+          required: true
+          type: string
+          format: txt
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - Template
+      summary: Update a template
+      operationId: User.prototype.__updateById__accessTokens
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/Template'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Template'
+      deprecated: false
+  '/Group/{name}':
+    get:
+      tags:
+        - TemplateGroup
+      summary: Get a Group of Templates
+      parameters:
+        - name: name
+          in: query
+          required: true
+          type: string
+          format: txt
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: json
+            items:
+              $ref: '#/definitions/TemplateGroup'
+      deprecated: false
+    post:
+      tags:
+        - TemplateGroup
+      summary: Creates a new template group
+      parameters:
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TemplateGroup'
+      deprecated: false
+    put:
+      tags:
+        - TemplateGroup
+      summary: Updates a template group. NOTE All templates in existing group are deleted and the provided group is posted.
+      parameters:
+      responses:
+        '200':
+          description: Request was successful
+          schema: '#/definitions/TemplateGroup'
+      deprecated: false
+    delete:
+      tags:
+        - TemplateGroup
+      summary: Deletes the entire group of templates
+      parameters:
+        - name: name
+          in: path
+          description: Group to delete
+          required: true
+          type: string
+          format: txt
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Config':
+    get:
+      tags:
+        - Config
+      summary: Get a Configuration object with valid values for template objects.
+      parameters:
+      responses:
+        '200':
+          description: Request was successful
+          schema: '#/definitions/Config'
+      deprecated: false
+definitions:
+  directive:
+    name:
+      type: string
+      title: Name
+      description: The name of the directive
+  sourceDirective:
+      type: object
+      allOf: 
+        $ref: #/definitions/directive
+        properties:
+          dataSource:
+            type: string
+            title: Data Source
+            description: Path of source data
+          dataDelimeter:
+            type: string
+            title: Delimiter
+            description: Delimiter used in data source path
+  enrich:
+    type: object
+    allOf: 
+      $ref: #/definitions/directive
+      properties:
+        type:
+          type: integer
+          value: 1
+        targetDataName:
+          type: string
+          title: Target
+          description: The path where data will be put
+        targetDataDelimiter:
+          type: string
+          title: Delimiter
+          description: The path delimeter
+        enrichClass: 
+          type: string
+          title: Provider Class
+          description: See Config Object for options
+        enrichSource: 
+          type: string
+          title: Source
+          description: The name of the data source
+        enrichParameter: 
+          type: string
+          title: Parameter
+          description: See Config Object for title and help
+        enrichCommand: 
+          type: string
+          title: Command
+          description: See Config Object for help
+        parseAs: 
+          type: integer
+  insert: 
+    type: object
+    allOf:
+      $ref: #/definitions/sourceDirective
+        properties: 
+        type: 
+          type: integer
+          value: 2
+        ifMissing: 
+          type: integer
+          title: If Missing
+          description: Action to take if source is missing see Config for options
+        ifPrimitive: 
+          type: integer
+          title: If Primitive
+          description: Action to take if source is a Primitive see Config for options
+        ifOperator: 
+          type: integer
+          title: If Operator
+          description: operator for Insert If see Config for options
+        ifValue: 
+          type: string
+          title: If Value
+          description: Values used wiht If Operator
+        ifObject: 
+          type: integer
+          title: If Object
+          description: Action to take if source is a Object see Config for options
+        ifList: 
+          type: integer
+          title: If List
+          description: Action to take if source is a List see Config for options
+        bookmarkPattern: 
+          type: string
+          title: Variant
+          description: The variant of the template
+        notFirst: 
+          type: array
+          title: Not First tags
+          description: Replace tags that will be blank on the first insertion in a list
+          items: 
+            type: string
+        notLast: 
+          type: array
+          title: Not Last tags
+          description: Replace tags that will be blank on the last insertion in a list
+          items: 
+            type: string
+        onlyFirst: 
+          type: array
+          title: Only First tags
+          description: Replace tags that will be blank on all but the first insertion in a list
+          items: 
+            type: string
+        onlyLast: 
+          type: array
+          title: Only Last tags
+          description: Replace tags that will be blank on all but the last insertion in a list
+          items: 
+            type: string
+  parse: 
+    type: object
+    allOf: 
+      $ref: #/definitions/sourceDirective
+      properties: 
+        type: 
+          type: integer
+          value: 3
+        ifMissing: 
+          type: integer
+          title: If Missing
+          description: Action to take if source is missing see Config for options
+        ifPrimitive: 
+          type: integer
+          title: If Primitive
+          description: Action to take if source is a Primitive type see Config for options
+        ifObject: 
+          type: integer
+          title: If Object
+          description: Action to take if source is a Object see Config for options
+        ifList: 
+          type: integer
+          title: If List
+          description: Action to take if source is a List see Config for options
+        dataTarget: 
+          type: string
+          title: File Name
+          description: The name of the file to be written to the archive
+        dataTargetDelimiter: 
+          type: boolean
+          title: Clear After
+          description: Clear Content afte saving
+        staticData: 
+          type: boolean
+          title: Clear After
+          description: Clear Content afte saving
+        parseFormat: 
+          type: integer
+  replace: 
+    type: object
+    allOf: 
+      $ref: #/definitions/sourceDirective
+      properties: 
+        type: 
+          type: integer
+          value: 4
+        ifMissing: 
+          type: integer
+          title: If Missing
+          description: Action to take if source is missing see Config for options
+        toValue: 
+          type: string
+          title: To Value
+          description: To value to be used if source is missing
+        fromValue: 
+          type: string
+          title: From Value
+          description: If provided will override the From value from the source path
+        ifPrimitive: 
+          type: integer
+          title: If Primitive
+          description: Action to take if source is a Primitive type see Config for options
+        ifObject: 
+          type: integer
+          title: If Object
+          description: Action to take if source is a Object see Config for options
+        objectAttrPrimitive: 
+          type: integer
+          title: If Attribute Primitive
+          description: Action to take if source is a Object and Attribute is Primitive see Config for options
+        objectAttrList: 
+          type: integer
+          title: If Attribute Primitive
+          description: Action to take if source is a Object and Attribute is List see Config for options
+        objectAttrObject: 
+          type: integer
+          title: If Attribute Object
+          description: Action to take if source is a Object and Attribute is Object see Config for options
+        ifList: 
+          type: integer
+          title: If List
+          description: Action to take if source is a List see Config for options
+        fromAttribute: 
+          type: string
+          title: From Attribute
+          description: Attribute name with From value
+        toAttribute: 
+          type: string
+          title: To Attribute
+          description: Attribute name with To value
+        listAttrMissing: 
+          type: integer
+          title: If List Attr Missing
+          description: Action to take if a List From / To attribute are missing see Config for options
+        listAttrNotPrimitive: 
+          type: integer
+          title: If List Attr Not Primitive
+          description: Action to take if a List From / To attribute is not a primitive see Config for options
+        processAfter: 
+          type: boolean
+          title: Clear After
+          description: Clear Content afte saving
+        processRequire: 
+          type: boolean
+          title: Clear After
+          description: Clear Content afte saving
+  save: 
+    type: object
+    allOf:
+      $ref: #/definitions/directive
+      properties: 
+        type: 
+          type: integer
+          value: 5
+        fileName: 
+          type: string
+          title: File Name
+          description: The name of the file to be written to the archive
+        clearAfter: 
+          type: boolean
+          title: Clear After
+          description: Clear Content afte saving
+  Template:
+    type: object
+    properties: 
+      id: 
+        type: object
+        description: Unique Template Identifier
+        properties: 
+          group: 
+            type: string
+            title: Group
+            description: Defines a group of related templates
+          name: 
+            type: string
+            title: Name
+            description: The template name
+          variant: 
+            type: string
+            title: Variant
+            description: The variant of the template
+      wrapper: 
+        type: object
+        description: The strings used to identify a tag/bookmark in content
+        properties: 
+          front: 
+            type: string
+            title: Open
+            description: indicates beginning of tag/bookmark
+          back: 
+            type: string
+            title: Close
+            description: indicates ending of tag/bookmark
+      description: 
+        type: string
+        title: Description
+        description: Describes the template used in error logging
+      content: 
+        type: string
+        title: Content
+        description: The tempalte content
+      contentType: 
+        type: integer
+        title: The Content type
+        description: Content Type see Config for options
+      contentDisposition: 
+        type: integer
+        title: The Content disposition
+        description: Content disposition  see Config for options
+      contentEncoding: 
+        type: integer
+        title: The Contentencoding
+        description: Content Encoding  see Config for options
+      contentFileName: 
+        type: string
+        title: Output Filename
+        description: Filename to save - can contain tags
+      contentRedirectUrl: 
+        type: string
+        title: Redirect URL
+        description: Provided for Rest API related uses
+      directives: 
+        type: array
+        title: Directives
+        description: The directives that drive the merge
+        items: 
+          anyOf : 
+            - $ref: #/definitions/enrich
+            - $ref: #/definitions/replace
+            - $ref: #/definitions/insert
+            - $ref: #/definitions/parse
+            - $ref: #/definitions/save
+  TemplateGroup:
+    type: object
+    properties: 
+      templates:
+        type: array
+        title: List of Templates
+        description: The templates in the group Group must be the same on all templates
+        items: 
+          type : 
+            $ref: #/definitions/Template
+tags:
+  - name: Template
+  - name: TemplateGroup
+  - name: Config
