@@ -1,8 +1,10 @@
 .apt_generated/
 target
-.settings/*
+.settings*
 .factorypath
 .classpath
 .project
 bin/*
+src/main/docker/war/*
+src/main/docker/templates/*
 
