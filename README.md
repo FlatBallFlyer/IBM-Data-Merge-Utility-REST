@@ -5,6 +5,11 @@ Overview
 ### NOW IN BETA!
 IDMU-REST exposes the IBM Data Merge Utility as a set of Restful Services
 
+## Related Pages
+1. [IDMU Project](https://github.com/FlatBallFlyer/IBM-Data-Merge-Utility-REST) - Core IDMU Project
+1. [IDMU Users Guide](https://flatballflyer.github.io/IBM-Data-Merge-Utility/USERS_GUIDE)
+1. [IDMU-CLI Project](https://github.com/FlatBallFlyer/IBM-Data-Merge-Utility-CLI) - Command Line merge tool
+
 ### Fast Start
 ```
 docker run -d -p 9080:9080 -p 9443:9443 --name idmu flatballflyer/idmu:4.0.0.Beta1
