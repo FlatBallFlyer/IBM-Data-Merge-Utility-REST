@@ -20,6 +20,15 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>Merge</servlet-name>
+		<servlet-class>com.ibm.util.merge.rest.Merge</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Merge</servlet-name>
+		<url-pattern>/Merge/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>Archive</servlet-name>
 		<servlet-class>com.ibm.util.merge.rest.Archive</servlet-class>
 	</servlet>
@@ -28,6 +37,7 @@
 		<url-pattern>/Archive/*</url-pattern>
 	</servlet-mapping>
 
+<!-- Remove or Comment Remaining Servlets for Production Build -->
 	<servlet>
 		<servlet-name>Config</servlet-name>
 		<servlet-class>com.ibm.util.merge.rest.Config</servlet-class>
@@ -53,15 +63,6 @@
 	<servlet-mapping>
 		<servlet-name>Template</servlet-name>
 		<url-pattern>/Template/*</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>Merge</servlet-name>
-		<servlet-class>com.ibm.util.merge.rest.Merge</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Merge</servlet-name>
-		<url-pattern>/Merge/*</url-pattern>
 	</servlet-mapping>
 
 </web-app>
