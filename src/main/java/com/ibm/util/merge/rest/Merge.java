@@ -36,7 +36,7 @@ public class Merge extends HttpServlet {
 					request.getCharacterEncoding()
 				);
 			Template merged = merger.merge();
-			response.setContentType(Template.CONTENT_TYPES().get(merged.getContentType()));
+			response.setContentType(merged.getContentType());
 			response.setHeader("Content-Disposition", merged.getContentDisposition());
 			merged.getMergedOutput().streamValue(response.getOutputStream());
 		} catch (MergeException e) {
