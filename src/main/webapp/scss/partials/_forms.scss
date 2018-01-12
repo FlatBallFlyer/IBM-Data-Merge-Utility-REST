@@ -1,0 +1,38 @@
+.form-box {
+	overflow: hidden;
+	padding: 20px;
+	background: #f7f7f9;
+	@include border-radius(4px);
+
+	h3 {
+		font-size: 36px;
+		list-style: 48px;
+		font-weight: $font-bold;
+	}
+
+	p {
+		color: #636c72;
+	}
+
+	.btn-green {
+		font-size: 18px;
+		line-height: 27px;
+		@include border-radius(2px);
+	}
+
+	.form-group:last-child {
+		margin-top: 1.5rem;
+	}
+}
+
+.form-group {
+	margin-botoom: 1.5rem;
+}
+
+.form-control-label {
+	font-weight: $font-bold;
+}
+
+.form-control {
+	line-height: 1.8rem;
+}

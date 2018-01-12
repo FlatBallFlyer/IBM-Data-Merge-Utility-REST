@@ -8,3 +8,4 @@ bin/*
 src/main/docker/war/*
 src/main/docker/templates/*
 
+/bin/

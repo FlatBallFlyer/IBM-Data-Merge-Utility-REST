@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  		<meta charset="utf-8">
+  		<title>Neighborhood</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="author" content="flip.hr">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-collapse-xs navbar-expand-md fixed-top">
+	    	
+	    	<div class="container">
+		    	<a class="navbar-brand" href="#"><i class="fa fa-map-marker"></i> Neighborhood</a>
+		      	
+		      	<button class="navbar-toggler" data-toggle="collapse" data-target="#main-menu">
+		        	<span class="navbar-toggler-icon"></span>
+		      	</button>
+
+	      		<div class="collapse navbar-collapse" id="main-menu">
+	        		<ul class="navbar-nav ml-auto">
+			        	<li class="nav-item active">
+			            	<a class="nav-link" href="#">Home</a>
+			          	</li>
+	          			<li class="nav-item dropdown">
+					        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+					          Browse
+					        </a>
+					        <div class="dropdown-menu">
+					        	<a class="dropdown-item" href="#">Hospitals</a>
+					        	<a class="dropdown-item" href="#">Finance</a>
+					        	<a class="dropdown-item" href="#">Shopping</a>
+					          	<a class="dropdown-item" href="#">Food</a>
+					          	<a class="dropdown-item" href="#">Nightlife</a>
+					          	<a class="dropdown-item" href="#">Hotels</a>
+					        </div>
+					    </li>
+	          			<li class="nav-item">
+	            			<a class="nav-link" href="#">Submit your brand</a>
+	          			</li>
+	          			<li class="nav-item">
+	            			<a class="nav-link" href="#" data-toggle="modal" data-target="#account-modal" data-case="login">Login</a>
+	          			</li>
+	          			<li class="nav-item">
+	            			<a class="nav-link" href="#" data-toggle="modal" data-target="#account-modal" data-case="register">Register</a>
+	          			</li>
+	        		</ul>
+	      		</div><!-- .collapse -->
+      		</div><!-- .container -->
+    	</nav><!-- nav -->
+
+	    <div class="home-hero">
+	    	<div class="container">
+	    		<div class="row">
+	    			<div class="col-md-12">
+	    				<div class="content-box">
+	    					<h2>Explore your neighborhood</h2>
+			    			<form method="GET" action="#">
+			  					<div class="form-group">
+									<input type="text" class="form-control" placeholder="What do you want to discover today?">
+									<input type="submit" class="btn btn-green" value="Search">
+			  					</div><!-- .form-group -->
+		  					</form>
+	    				</div><!-- .content-box -->
+	    			</div><!-- .col-md-12 -->
+	    		</div><!-- .row -->
+	    	</div><!-- .container -->
+	    </div><!-- .home-hero -->
+
+	    <div class="place-list">
+	    	<div class="container">
+	    		<div class="row">
+	    			<div class="col-md-9 push-md-3">
+	    				<div class="row">
+			    			<div class="col-sm-6 col-md-6 col-lg-4 order-last">
+				    			<div class="card">
+									<img class="card-img-top" src="https://unsplash.it/350/250" alt="Place 1">
+								  	<div class="card-block">
+								    	<h4 class="card-title">Flip.hr</h4>
+								    	<p class="card-text">Flip is a kick-ass web development company from Croatia that creates awesome websites and ios apps.</p>
+								    	<a href="place.html" class="btn btn-purple">More about Flip <i class="fa fa fa-angle-double-right"></i></a>
+								  	</div><!-- .card-block -->
+								</div><!-- .card -->
+							</div><!-- .col-md-4 -->
+							<div class="col-sm-6 col-md-6 col-lg-4">
+				    			<div class="card">
+									<img class="card-img-top" src="https://unsplash.it/350/250" alt="Place 1">
+								  	<div class="card-block">
+								    	<h4 class="card-title">PacktPub</h4>
+								    	<p class="card-text">Packt Publishing is the leading <span data-toggle="tooltip" data-placement="left" data-html="true" title="2nd Floor Livery Place<br>35 Livery Street<br>Colmore Business District<br>Birmingham B3 2PB<br>United Kingdom">UK</span> provider of Technology eBooks, Coding eBooks, Videos and Blogs; helping IT professionals to put software to work.</p>
+								    	<a href="#" class="btn btn-purple" data-toggle="popover" title="Did you know?" data-content="And here's some amazing content. It's very engaging. Right?" data-trigger="focus">More about Packt <i class="fa fa fa-angle-double-right"></i></a>
+								  	</div><!-- .card-block -->
+								</div><!-- .card -->
+							</div><!-- .col-md-4 -->
+							<div class="col-sm-6 col-md-6 col-lg-4">
+				    			<div class="card">
+									<img class="card-img-top" src="https://unsplash.it/350/250" alt="Place 1">
+								  	<div class="card-block">
+								    	<h4 class="card-title">Zara</h4>
+								    	<p class="card-text">Zara is a <span href="#" class="specific-tip" title="This is something really cool">Spanish</span> clothing and accessories retailer based in Arteixo, Galicia. </p>
+								    	<a href="#" class="btn btn-purple dynamic-popover" data-bind="#popover-1">More about Zara <i class="fa fa fa-angle-double-right"></i></a>
+								  	</div><!-- .card-block -->
+								</div><!-- .card -->
+							</div><!-- .col-md-4 -->
+							<div class="col-sm-6 col-md-6 col-lg-4">
+				    			<div class="card">
+									<img class="card-img-top" src="https://unsplash.it/350/250" alt="Place 1">
+								  	<div class="card-block">
+								    	<h4 class="card-title">McDonald's</h4>
+								    	<p class="card-text">Classic, long-running fast-food chain known for its burgers, fries & shakes.</p>
+								    	<a href="#" class="btn btn-purple">More about McDonald's <i class="fa fa fa-angle-double-right"></i></a>
+								  	</div><!-- .card-block -->
+								</div><!-- .card -->
+							</div><!-- .col-md-4 -->
+							<div class="col-sm-6 col-md-6 col-lg-4">
+				    			<div class="card">
+									<img class="card-img-top" src="https://unsplash.it/350/250" alt="Place 1">
+								  	<div class="card-block">
+								    	<h4 class="card-title">1 OAK Nightclub</h4>
+								    	<p class="card-text">Fashionable nightclub catering to celebrity entertainers & upscale-chic crowds in a ritzy scene.</p>
+								    	<a href="#" class="btn btn-purple">More about 1 OAK <i class="fa fa fa-angle-double-right"></i></a>
+								  	</div><!-- .card-block -->
+								</div><!-- .card -->
+							</div><!-- .col-md-4 -->
+							<div class="col-sm-6 col-md-6 col-lg-4">
+				    			<div class="card">
+									<img class="card-img-top" src="https://unsplash.it/350/250" alt="Place 1">
+								  	<div class="card-block">
+								    	<h4 class="card-title">Best Buy</h4>
+								    	<p class="card-text">Best Buy Co., Inc. is a U.S transnational consumer electronics corporation headquartered in Richfield, Minnesota, a Minneapolis suburb. Internationally, it also operates in Canada and Mexico. </p>
+								    	<a href="#" class="btn btn-purple">More about Best Buy <i class="fa fa fa-angle-double-right"></i></a>
+								  	</div><!-- .card-block -->
+								</div><!-- .card -->
+							</div><!-- .col-md-4 -->
+						</div><!-- .row -->
+					</div><!-- .col-md-9 -->
+	    			<div class="col-md-3 pull-md-9">
+						<ul class="list-group">
+						  	<a href="#" class="list-group-item active">All categories</a>
+						  	<a href="#" class="list-group-item list-group-item-action">Hospitals</a>
+						  	<a href="#" class="list-group-item list-group-item-action">Finance</a>
+						  	<a href="#" class="list-group-item list-group-item-action">Shopping</a>
+							<a href="#" class="list-group-item list-group-item-action">Nightlife</a>
+							<a href="#" class="list-group-item list-group-item-action">Hotels</a>
+						</ul>
+					</div><!-- .col-md-3 -->
+				</div><!-- .row -->
+			</div><!-- .container -->
+	    </div><!-- .place-list -->
+
+
+	    <div class="modal fade" id="test-modal">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+			    	<div class="modal-header">
+			        	<h5 class="modal-title">Modal title</h5>
+			        	<button type="button" class="close" data-dismiss="modal">
+			          		<span aria-hidden="true">&times;</span>
+			        	</button>
+			      	</div><!-- .modal-header -->
+				    <div class="modal-body">
+				        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+				        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+				    </div><!-- .modal-body -->
+      				<div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <button type="button" class="btn btn-primary">Save changes</button>
+        			</div><!-- .modal-footer -->
+    			</div><!-- .modal-content -->
+  			</div><!-- .modal-dialog -->
+		</div><!-- .modal -->
+
+
+
+
+	    <div class="modal fade" id="account-modal">
+ 			<div class="modal-dialog">
+    			<div class="modal-content">
+    				<a href="#" class="close-modal" data-dismiss="modal"><i class="fa fa-times"></i></a>
+			      	<div class="modal-body">
+			        	<div class="form-box">
+			        		<div id="login-case">
+	    						<h3>Login to your account</h3>
+	    						<p>If you already a member login to your Neighborhood account.</p>
+		    					<form method="POST" action="#" class="validate">
+				  					<div class="form-group">
+			    						<label class="form-control-label">E-mail</label>
+			    						<input type="email" class="form-control" data-fv-notempty="true">
+				  					</div><!-- .form-group -->
+				  					<div class="form-group">
+			    						<label class="form-control-label">Password</label>
+			    						<input type="password" class="form-control" data-fv-notempty="true">
+				  					</div><!-- .form-group -->
+								  	<div class="form-group">
+								  		<input type="submit" value="Login" class="btn btn-green">
+								  	</div><!-- .form-group -->
+		  						</form>
+	  						</div><!-- #login-case -->
+	  						<div id="register-case" style="display: none;">
+	    						<h3>Create an account</h3>
+		    					<p>Register on our great website to become a part of your Neighborhood.</p>
+			    				<form method="POST" action="#">
+				    				<div class="form-group">
+			    						<label class="form-control-label">Your name</label>
+			    						<input type="text" class="form-control" placeholder="Please enter your full name" data-fv-notempty="true">
+				  					</div><!-- .form-group -->
+				  					<div class="form-group">
+			    						<label class="form-control-label">E-mail</label>
+			    						<input type="email" class="form-control" placeholder="Please enter your e-mail address" data-fv-notempty="true">
+				  					</div><!-- .form-group -->
+				  					<div class="form-group">
+			    						<label class="form-control-label">Password</label>
+			    						<input type="password" class="form-control" data-fv-notempty="true">
+				  					</div><!-- .form-group -->
+				  					<div class="form-check">
+									    <label class="form-check-label">
+									      <input type="checkbox" class="form-check-input">
+									      I agree to your awesome Terms of service
+									    </label>
+								  	</div><!-- .form-check -->
+								  	<div class="form-group">
+								  		<input type="submit" value="Become a member" class="btn btn-green">
+								  	</div><!-- .form-group -->
+			  					</form>
+	  						</div><!-- #login-case -->
+  						</div><!-- .form-box -->
+			      	</div><!-- .modal-body -->
+    			</div><!-- .modal-content -->
+  			</div><!-- .modal-dialog -->
+		</div><!-- .modal -->
+
+		<div style="display:none;">
+			<div id="popover-1">
+		    	<div class="data-title">More about zara</div>
+		    	<div class="data-content"><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. <span style="color:red;">Lorem Ipsum</span> has been the industry's standard dummy <i>text ever</i> since the 1500s</div>
+		  	</div>
+		</div>
+
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="js/tether.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.site.js"></script>
+			
+	</body>
+</html>

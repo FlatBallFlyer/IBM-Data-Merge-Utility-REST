@@ -1,0 +1,17 @@
+.table thead th {
+	font-weight: $font-bold;
+	text-transform: uppercase;
+}
+
+.pricing-table {
+	margin: 60px 0;
+
+	.btn {
+		@include border-radius(2px);
+	}
+
+	.table-hover tbody tr:hover {
+		background: #78379d;
+		color: #fff;
+	}
+}

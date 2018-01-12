@@ -1,0 +1,32 @@
+.place-list {
+
+	.card {
+		background: #f0f0f0;
+		text-align: center;
+		margin-bottom: 20px;
+		border: 1px solid transparent;
+	}
+
+	.card-text {
+		color: #b3b3b3;
+
+		span {
+			color: $color-purple;
+		}
+	}
+
+	.btn-purple {
+		display: block;
+
+		@include responsive(lg) {
+    		overflow: hidden;
+    		text-overflow: ellipsis;
+  		}
+
+  		@include responsive(sm) {
+    		overflow: hidden;
+    		text-overflow: ellipsis;
+  		}
+	}
+
+}

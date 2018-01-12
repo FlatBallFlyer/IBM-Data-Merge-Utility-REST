@@ -1,0 +1,268 @@
+body {
+	font-family: "Roboto", sans-serif;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	padding: 0;
+	margin: 0;
+	background: #fff;
+	color: #1b1b1b
+}
+
+.pricing-grid .bg-inverse h4 {
+	color: #fff;
+	font-weight: 500
+}
+
+.pricing-grid .btn {
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	border-radius: 2px
+}
+
+.form-box {
+	overflow: hidden;
+	padding: 20px;
+	background: #f7f7f9;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	border-radius: 4px
+}
+
+.form-box h3 {
+	font-size: 36px;
+	list-style: 48px;
+	font-weight: 500
+}
+
+.form-box p {
+	color: #636c72
+}
+
+.form-box .btn-green {
+	font-size: 18px;
+	line-height: 27px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	border-radius: 2px
+}
+
+.form-box .form-group:last-child {
+	margin-top: 1.5rem
+}
+
+.form-group {
+	margin-botoom: 1.5rem
+}
+
+.form-control-label {
+	font-weight: 500
+}
+
+.form-control {
+	line-height: 1.8rem
+}
+
+.table thead th {
+	font-weight: 500;
+	text-transform: uppercase
+}
+
+.pricing-table {
+	margin: 60px 0
+}
+
+.pricing-table .btn {
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	border-radius: 2px
+}
+
+.pricing-table .table-hover tbody tr:hover {
+	background: #78379d;
+	color: #fff
+}
+
+.navbar {
+	background: #78379d
+}
+
+.navbar .navbar-brand {
+	color: #fff;
+	font-size: 1.5rem;
+	font-weight: 500;
+	padding-top: 0.5rem
+}
+
+.navbar .navbar-nav .nav-link {
+	color: #fff;
+	font-weight: 300;
+	padding-left: 0.8rem;
+	padding-right: 0.8rem;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	border-radius: 4px
+}
+
+.navbar .navbar-nav .nav-link:hover {
+	background: #fff;
+	color: #78379d
+}
+
+.home-hero {
+	background: #78379d;
+	overflow: hidden;
+	margin: 0 0 40px 0
+}
+
+.home-hero .content-box {
+	overflow: hidden;
+	padding: 120px 0;
+	margin: 0 auto;
+	max-width: 720px;
+	text-align: center
+}
+
+.home-hero .content-box h2 {
+	font-size: 3rem;
+	font-weight: 500;
+	color: #fff;
+	margin: 0 0 20px 0
+}
+
+@media ( min-width : 576px) and (max-width: 768px) {
+	.home-hero .content-box h2 {
+		font-size: 2.4rem
+	}
+}
+
+.home-hero .content-box .form-group {
+	position: relative
+}
+
+.home-hero .content-box .form-control {
+	height: 60px;
+	font-size: 18px;
+	line-height: 27px
+}
+
+.home-hero .content-box .btn-green {
+	font-size: 18px;
+	line-height: 27px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 15px 40px;
+	text-transform: uppercase;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0
+}
+
+#account-modal .close-modal {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	background: #78379d;
+	color: #fff;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	padding: 0 0 0 6px
+}
+
+#account-modal .form-box {
+	background: transparent
+}
+
+.place-list .card {
+	background: #f0f0f0;
+	text-align: center;
+	margin-bottom: 20px;
+	border: 1px solid transparent
+}
+
+.place-list .card-text {
+	color: #b3b3b3
+}
+
+.place-list .card-text span {
+	color: #78379d
+}
+
+.place-list .btn-purple {
+	display: block
+}
+
+@media ( min-width : 992px) and (max-width: 1200px) {
+	.place-list .btn-purple {
+		overflow: hidden;
+		text-overflow: ellipsis
+	}
+}
+
+@media ( min-width : 576px) and (max-width: 768px) {
+	.place-list .btn-purple {
+		overflow: hidden;
+		text-overflow: ellipsis
+	}
+}
+
+.place {
+	padding: 0 0 40px 0
+}
+
+.place .title {
+	font-size: 32px;
+	line-height: 48px;
+	font-weight: 500;
+	color: #78379d;
+	margin: 0 0 10px 0
+}
+
+.place .description {
+	overflow: hidden;
+	margin: 0 0 20px 0
+}
+
+.place .description p {
+	font-size: 18px;
+	line-height: 27px
+}
+
+.place .carousel {
+	margin-top: 20px;
+	margin-bottom: 20px
+}
+
+.btn:hover {
+	cursor: pointer
+}
+
+.btn-green {
+	background: #379d60;
+	color: #fff
+}
+
+.btn-green:hover {
+	background: #268d4f;
+	color: #fff
+}
+
+.btn-purple {
+	border: 1px solid #78379d;
+	background: transparent;
+	color: #78379d
+}
+
+.btn-purple:hover {
+	background: #78379d;
+	color: #fff
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,27 @@
+.place { 
+	padding: 0 0 40px 0;
+
+	.title {
+		font-size: 32px;
+		line-height: 48px;
+		font-weight: $font-bold;
+		color: $color-purple;
+		margin: 0 0 10px 0;
+	}
+
+	.description {
+		overflow: hidden;
+		margin: 0 0 20px 0;
+
+		p {
+			font-size: 18px;
+			line-height: 27px;
+		}
+	}
+
+	.carousel {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+}

@@ -1,0 +1,24 @@
+.btn:hover {
+	cursor: pointer;	
+}
+
+.btn-green {
+	background: #379d60;
+	color: #fff;
+
+	&:hover {
+		background: #268d4f;
+		color: #fff;
+	}
+}
+
+.btn-purple {
+	border: 1px solid $color-purple;
+	background: transparent;
+	color: $color-purple;
+
+	&:hover {
+		background: $color-purple;
+		color: #fff;
+	}
+}

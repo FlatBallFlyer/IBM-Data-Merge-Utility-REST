@@ -1,0 +1,19 @@
+#account-modal {
+
+	.close-modal {
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		background: $color-purple;
+		color: #fff;
+		@include border-radius(50%);
+		width: 25px;
+		height: 25px;
+		padding: 0 0 0 6px;
+	}
+
+	.form-box {
+		background: transparent;
+	}
+
+}
