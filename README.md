@@ -12,7 +12,7 @@ IDMU-REST exposes the IBM Data Merge Utility as a set of Restful Services
 
 ### Fast Start
 ```
-docker run -d -p 9080:9080 -p 9443:9443 --name idmu flatballflyer/idmu:4.0.0.Beta1
+docker run -d -p 9080:9080 -p 9443:9443 --name idmu flatballflyer/idmu:latest
 sleep 15
 curl localhost:9080/idmu/Group
 ```
@@ -20,7 +20,7 @@ The server may take a few seconds to come up, if the curl command doesn't return
 ```
 [
   "system",
-  "test"
+  "intro"
 ]
 ```
 To access and run samples (requires git)
