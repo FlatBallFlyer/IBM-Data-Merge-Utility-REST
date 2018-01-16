@@ -32,7 +32,7 @@ public class Template extends HttpServlet {
 			if (fullname == null) fullname = "/";
 			fullname = fullname.substring(1);
 			String reply = cache.getTemplate(fullname);
-//			response.setContentType("applicaiton/json");
+			response.setContentType("text/json");
 			response.getWriter().write(reply);
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
@@ -45,7 +45,7 @@ public class Template extends HttpServlet {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
 			String theGroup = IOUtils.toString(request.getInputStream(), request.getCharacterEncoding());
 			String reply = cache.putTemplate(theGroup);
-			response.setContentType("applicaiton/json");
+			response.setContentType("text/json");
 			response.getWriter().write(reply);
 		} catch (MergeException e) {
 			LOGGER.log(Level.WARNING, e.getErrorMessage());
@@ -61,7 +61,7 @@ public class Template extends HttpServlet {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
 			String theGroup = IOUtils.toString(request.getInputStream(), request.getCharacterEncoding());
 			String reply = cache.postTemplate(theGroup);
-			response.setContentType("applicaiton/json");
+			response.setContentType("text/json");
 			response.getWriter().write(reply);
 		} catch (MergeException e) {
 			LOGGER.log(Level.WARNING, e.getErrorMessage());
@@ -79,7 +79,7 @@ public class Template extends HttpServlet {
 			if (fullname == null) fullname = "/";
 			fullname = fullname.substring(1);
 			String reply = cache.deleteTemplate(fullname);
-			response.setContentType("applicaiton/json");
+			response.setContentType("text/json");
 			response.getWriter().write(reply);
 		} catch (MergeException e) {
 			LOGGER.log(Level.WARNING, e.getErrorMessage());
