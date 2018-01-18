@@ -1,6 +1,7 @@
 package com.ibm.util.merge.rest;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,6 +27,7 @@ public class Template extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Writer writer = response.getWriter();
 		try {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
 			String fullname = request.getPathInfo();
@@ -33,46 +35,49 @@ public class Template extends HttpServlet {
 			fullname = fullname.substring(1);
 			String reply = cache.getTemplate(fullname);
 			response.setContentType("text/json");
-			response.getWriter().write(reply);
+			writer.write(reply);
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
-			response.getWriter().write(t.getMessage());
+			writer.write(t.getMessage());
 		}
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Writer writer = response.getWriter();
 		try {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
 			String theGroup = IOUtils.toString(request.getInputStream(), request.getCharacterEncoding());
 			String reply = cache.putTemplate(theGroup);
 			response.setContentType("text/json");
-			response.getWriter().write(reply);
+			writer.write(reply);
 		} catch (MergeException e) {
 			LOGGER.log(Level.WARNING, e.getErrorMessage());
-			response.getWriter().write(e.getErrorMessage());
+			writer.write(e.getErrorMessage());
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
-			response.getWriter().write(t.getMessage());
+			writer.write(t.getMessage());
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Writer writer = response.getWriter();
 		try {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
 			String theGroup = IOUtils.toString(request.getInputStream(), request.getCharacterEncoding());
 			String reply = cache.postTemplate(theGroup);
 			response.setContentType("text/json");
-			response.getWriter().write(reply);
+			writer.write(reply);
 		} catch (MergeException e) {
 			LOGGER.log(Level.WARNING, e.getErrorMessage());
-			response.getWriter().write(e.getErrorMessage());
+			writer.write(e.getErrorMessage());
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
-			response.getWriter().write(t.getMessage());
+			writer.write(t.getMessage());
 		}
 	}
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Writer writer = response.getWriter();
 		try {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
 			String fullname = request.getPathInfo();
@@ -80,13 +85,13 @@ public class Template extends HttpServlet {
 			fullname = fullname.substring(1);
 			String reply = cache.deleteTemplate(fullname);
 			response.setContentType("text/json");
-			response.getWriter().write(reply);
+			writer.write(reply);
 		} catch (MergeException e) {
 			LOGGER.log(Level.WARNING, e.getErrorMessage());
-			response.getWriter().write(e.getErrorMessage());
+			writer.write(e.getErrorMessage());
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
-			response.getWriter().write(t.getMessage());
+			writer.write(t.getMessage());
 		}
 	}
 }

@@ -2,6 +2,9 @@ package com.ibm.util.merge.rest;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,6 +29,7 @@ public class Archive extends HttpServlet {
      */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    		OutputStream output = response.getOutputStream();
     		try {
     			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
     			String fullname = request.getPathInfo().substring(1);
@@ -33,10 +37,11 @@ public class Archive extends HttpServlet {
     			response.setContentType("application/octet-stream");
     			response.setHeader("Content-Disposition", "filename=\"" + fullname + "\"");
     			LOGGER.log(Level.WARNING, "Get Archive " + archive.getAbsolutePath());
-    		    FileUtils.copyFile(archive, response.getOutputStream());
+    		    FileUtils.copyFile(archive, output);
     		    archive.delete();
     		} catch (Throwable e) {
-    			response.getWriter().write("Error");
+    			Writer writer = new OutputStreamWriter(output, "UTF-8");
+    			writer.write("Error");
     			LOGGER.log(Level.WARNING, "Get Archive Throwable Error" + e.getMessage());
     		}
     }

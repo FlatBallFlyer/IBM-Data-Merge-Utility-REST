@@ -2,6 +2,9 @@ package com.ibm.util.merge.rest;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,6 +33,7 @@ public class Merge extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Merger merger = null;
+		OutputStream output = response.getOutputStream();
 		try {
 			merger = new Merger(
 					(Cache) request.getServletContext().getAttribute("Cache"), 
@@ -44,11 +48,11 @@ public class Merge extends HttpServlet {
 			LOGGER.log(Level.SEVERE, "mergeReturn:" + merged.getMergeReturn());
 			switch (merged.getMergeReturn()) {
 				case Template.RETURN_CONTENT :
-					merged.getMergedOutput().streamValue(response.getOutputStream());
+					merged.getMergedOutput().streamValue(output);
 					break;
 				case Template.RETURN_ARCHIVE :
 		    			File archive = merger.getArchive().getArchiveFile();
-		    		    FileUtils.copyFile(archive, response.getOutputStream());
+		    		    FileUtils.copyFile(archive, output);
 		    		    archive.delete();
 		    		    break;
 				case Template.RETURN_FORWARD :
@@ -56,10 +60,12 @@ public class Merge extends HttpServlet {
 			}			
 		} catch (MergeException e) {
 			LOGGER.log(Level.WARNING, "MergeException:" + e.getErrorMessage());
-			response.getWriter().write(e.getErrorMessage());
+			Writer writer = new OutputStreamWriter(output, "UTF-8");
+			writer.write(e.getErrorMessage());
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, "Throwable:" + t.getMessage());
-			response.getWriter().write("Throwable Caught!");
+			Writer writer = new OutputStreamWriter(output, "UTF-8");
+			writer.write("Throwable Caught!");
 		}
 	}
 }

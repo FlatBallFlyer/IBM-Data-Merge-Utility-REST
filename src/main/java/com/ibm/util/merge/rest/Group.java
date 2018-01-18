@@ -1,6 +1,7 @@
 package com.ibm.util.merge.rest;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+
 import com.ibm.util.merge.Cache;
 import com.ibm.util.merge.exception.MergeException;
 
@@ -25,6 +27,7 @@ public class Group extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Writer writer = response.getWriter();
 		try { 
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
 			String fullname = request.getPathInfo();
@@ -32,46 +35,49 @@ public class Group extends HttpServlet {
 			fullname = fullname.substring(1);
 			String reply = cache.getGroup(fullname);
 			response.setContentType("text/json");
-			response.getWriter().write(reply);
+			writer.write(reply);
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
-			response.getWriter().write("ERROR");
+			writer.write("ERROR");
 		}
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Writer writer = response.getWriter();
 		try {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
 			String theGroup = IOUtils.toString(request.getInputStream(), request.getCharacterEncoding());
 			String reply = cache.putGroup(theGroup);
 			response.setContentType("applicaiton/json");
-			response.getWriter().write(reply);
+			writer.write(reply);
 		} catch (MergeException e) {
 			LOGGER.log(Level.WARNING, e.getErrorMessage());
-			response.getWriter().write(e.getErrorMessage());
+			writer.write(e.getErrorMessage());
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
-			response.getWriter().write(t.getMessage());
+			writer.write(t.getMessage());
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Writer writer = response.getWriter();
 		try {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
 			String theGroup = IOUtils.toString(request.getInputStream(), request.getCharacterEncoding());
 			String reply = cache.postGroup(theGroup);
 			response.setContentType("applicaiton/json");
-			response.getWriter().write(reply);
+			writer.write(reply);
 		} catch (MergeException e) {
 			LOGGER.log(Level.WARNING, e.getErrorMessage());
-			response.getWriter().write(e.getErrorMessage());
+			writer.write(e.getErrorMessage());
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
-			response.getWriter().write(t.getMessage());
+			writer.write(t.getMessage());
 		}
 	}
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Writer writer = response.getWriter();
 		try {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
 			String fullname = request.getPathInfo();
@@ -79,13 +85,13 @@ public class Group extends HttpServlet {
 			fullname = fullname.substring(1);
 			String reply = cache.deleteGroup(fullname);
 			response.setContentType("applicaiton/json");
-			response.getWriter().write(reply);
+			writer.write(reply);
 		} catch (MergeException e) {
 			LOGGER.log(Level.WARNING, e.getErrorMessage());
-			response.getWriter().write(e.getErrorMessage());
+			writer.write(e.getErrorMessage());
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
-			response.getWriter().write(t.getMessage());
+			writer.write(t.getMessage());
 		}
 	}
 }
