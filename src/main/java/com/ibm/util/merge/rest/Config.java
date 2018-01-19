@@ -26,7 +26,8 @@ public class Config extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Cache cache = (Cache) request.getServletContext().getAttribute("Cache");
-			response.setContentType("text/json");
+			response.setContentType("application/json");
+			response.setHeader("Content-Disposition", "attachment;filename=\"config.json\"");
 			response.getWriter().write(cache.getConfig().get());
 		} catch (MergeException e) {
 			LOGGER.log(Level.SEVERE, "Cache not Configured!");

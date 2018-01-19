@@ -34,7 +34,8 @@ public class Template extends HttpServlet {
 			if (fullname == null) fullname = "/";
 			fullname = fullname.substring(1);
 			String reply = cache.getTemplate(fullname);
-			response.setContentType("text/json");
+			response.setContentType("application/json");
+			response.setHeader("Content-Disposition", "attachment;filename=\"" + fullname + ".json\"");
 			writer.write(reply);
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());

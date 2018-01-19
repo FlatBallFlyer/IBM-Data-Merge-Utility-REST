@@ -34,7 +34,8 @@ public class Group extends HttpServlet {
 			if (fullname == null) fullname = "/";
 			fullname = fullname.substring(1);
 			String reply = cache.getGroup(fullname);
-			response.setContentType("text/json");
+			response.setContentType("application/json");
+			response.setHeader("Content-Disposition", "attachment;filename=\"" + fullname + ".json\"");
 			writer.write(reply);
 		} catch (Throwable t) {
 			LOGGER.log(Level.WARNING, t.getMessage());
