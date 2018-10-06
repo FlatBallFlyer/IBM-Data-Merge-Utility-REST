@@ -1,9 +1,6 @@
 # Based on official WebSphere Liberty docker
 FROM tomcat:8.0-jre8
 
-# Copy the Tomcat config files
-ADD ./tomcat/* //usr/local/tomcat/conf/
-
 # Copy the war file into the container
 ADD ./war/idmu-rest-4.0.1-SNAPSHOT.war //usr/local/tomcat/webapps/idmu.war
 
