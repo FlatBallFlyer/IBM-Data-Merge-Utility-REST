@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ibm.util.merge</groupId>
 	<artifactId>idmu-rest</artifactId>
-	<version>4.0.1-SNAPSHOT</version>
+	<version>4.0.2</version>
 	<name>idmu</name>
 	<packaging>war</packaging>
 	<description>IDMU Rest Interface</description>
