@@ -32,6 +32,36 @@ public class Merge extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		LOGGER.log(Level.SEVERE, "doGet");
+		mergeIt(request, response);
+	}
+	
+	/**
+	 * @see javax.servlet.http.HttpServlet#doPut(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		LOGGER.log(Level.SEVERE, "doPut");
+		mergeIt(request, response);
+	}
+	
+	/**
+	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		LOGGER.log(Level.SEVERE, "doPost");
+		
+		// This foo is a hack, I'm not sure why but the Merger constructor can not read the input stream
+		// in the same way as the get and put input stream, without this statement the input read is an empty string. 
+		@SuppressWarnings("unused")
+		String foo = request.getInputStream().toString();
+		
+		mergeIt(request, response);
+	}
+	
+	/**
+	 * Perform the Merge
+	 */
+	private void mergeIt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Merger merger = null;
 		OutputStream output = response.getOutputStream();
 		try {
@@ -42,10 +72,11 @@ public class Merge extends HttpServlet {
 					request.getInputStream(), 
 					request.getCharacterEncoding()
 				);
+			LOGGER.log(Level.SEVERE, "Start");
 			Template merged = merger.merge();
 			response.setContentType(merged.getContentType());
 			response.setHeader("Content-Disposition", merged.getContentDisposition());
-			LOGGER.log(Level.SEVERE, "mergeReturn:" + merged.getMergeReturn());
+			LOGGER.log(Level.SEVERE, "Finish mergeReturn:" + merged.getMergeReturn());
 			switch (merged.getMergeReturn()) {
 				case Template.RETURN_CONTENT :
 					merged.getMergedOutput().streamValue(output);
@@ -59,11 +90,11 @@ public class Merge extends HttpServlet {
 					// todo Forward request to merged.getContentRedirectUrl()
 			}			
 		} catch (MergeException e) {
-			LOGGER.log(Level.WARNING, "MergeException:" + e.getErrorMessage());
+			LOGGER.log(Level.SEVERE, "MergeException:" + e.getErrorMessage());
 			Writer writer = new OutputStreamWriter(output, "UTF-8");
 			writer.write(e.getErrorMessage());
 		} catch (Throwable t) {
-			LOGGER.log(Level.WARNING, "Throwable:" + t.getMessage());
+			LOGGER.log(Level.SEVERE, "Throwable:" + t.getMessage());
 			Writer writer = new OutputStreamWriter(output, "UTF-8");
 			writer.write("Throwable Caught!");
 		}
